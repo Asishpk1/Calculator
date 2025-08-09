@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+        integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Bootswatch Theme -->
+    <link id="themeStylesheet" rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.2/dist/morph/bootstrap.min.css" />
+
+    <style>
+        .calc-btn {
+            width: 60px;
+            height: 58px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calc-btn-wide {
+            width: 130px;
+            height: 58px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex align-items-center justify-content-center vh-100" style="background-color: #d6aefc;">
+
+        <div class="p-4 bg-light" style="border-radius: 20px;box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;">
+            <input id="input" type="text" class="form-control form-control-lg mb-4 text-end py-3 mt-1 shadow" placeholder="0" readonly style="border-radius: 40px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+
+            <div class="d-flex justify-content-between mb-3 gap-3">
+                <button onclick="Allclear()" class="btn calc-btn" style="background-color: #d6aefc; color: white;">AC</button>
+                <button onclick="backspace()" class="btn btn-secondary calc-btn" style="background-color: #d6aefc; color: white;"><i
+                        class="fa-solid fa-delete-left"></i></button>
+                <button onclick="displayData('%')" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">%</button>
+                <button onclick="displayData('/')" class="btn btn-warning calc-btn fs-4" style="background-color: #d6aefc; color: white;">÷</button>
+            </div>
+
+            <div class="d-flex justify-content-between  mb-3 gap-3">
+                <button onclick="displayData(7)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">7</button>
+                <button onclick="displayData(8)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">8</button>
+                <button onclick="displayData(9)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">9</button>
+                <button onclick="displayData('*')" class="btn btn-warning calc-btn fs-4" style="background-color: #d6aefc; color: white;">×</button>
+            </div>
+
+            <div class="d-flex justify-content-between  mb-3 gap-3">
+                <button onclick="displayData(4)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">4</button>
+                <button onclick="displayData(5)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">5</button>
+                <button onclick="displayData(6)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">6</button>
+                <button onclick="displayData('-')" class="btn btn-warning calc-btn fs-4" style="background-color: #d6aefc; color: white;">-</button>
+            </div>
+
+            <div class="d-flex justify-content-between  mb-3 gap-3">
+                <button onclick="displayData(1)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">1</button>
+                <button onclick="displayData(2)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">2</button>
+                <button onclick="displayData(3)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">3</button>
+                <button onclick="displayData('+')" class="btn btn-warning calc-btn fs-4" style="background-color: #d6aefc; color: white;">+</button>
+            </div>
+
+            <div class="d-flex justify-content-between  mb-3 gap-3">
+                <button onclick="displayData(0)" class="btn btn-primary calc-btn" style="background-color: #d6aefc; color: white;">0</button>
+                <button onclick="displayData('.')" class="btn btn-primary calc-btn fs-4" style="background-color: #d6aefc; color: white;">.</button>
+                <button onclick="Equalto()" class="btn btn-success flex-fill calc-btn-wide fs-4" style="background-color: #d6aefc; color: white;">=</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+    const input = document.getElementById('input');
+
+    function displayData(num) {
+      input.value += num;
+    }
+    function Allclear() {
+      input.value = "";
+      input.placeholder = 0;
+    }
+    function Equalto() {
+      try {
+        input.value = eval(input.value);
+      } catch {
+        input.value = "";
+        input.placeholder = "Invalid";
+      }
+    }
+    function backspace() {
+      input.value = input.value.slice(0, -1);
+    }
+  </script>
+</body>
+
+</html>
